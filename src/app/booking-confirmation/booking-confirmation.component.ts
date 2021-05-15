@@ -12,6 +12,9 @@ import { getAttrsForDirectiveMatching } from '@angular/compiler/src/render3/view
 export class BookingConfirmationComponent implements OnInit {
   bookingData = null;
   weatherdata = null;
+  exchange = null;
+  rateeur = null;
+  rateusd = null;
 
   constructor(
     private http: HttpClient,
@@ -35,6 +38,20 @@ export class BookingConfirmationComponent implements OnInit {
       this.weatherdata = weatherdata;
       console.log(weatherdata);
   });
+  this.http.get('https://api.nbp.pl/api/exchangerates/tables/A/?format=json').subscribe((exchange: any) => {
+    this.exchange = exchange;
+    const exchangeTable = exchange[0].rates; 
+    console.log(exchangeTable);
+    for(const currencyDate of exchangeTable){
+      if (currencyDate.code == 'USD'){
+        this.rateusd = currencyDate.mid;
+      }
+      else if (currencyDate.code == 'EUR'){
+        this.rateeur = currencyDate.mid;
+      }
+    }
+    
+});
   }
 }
 

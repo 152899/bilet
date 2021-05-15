@@ -1,6 +1,14 @@
 <div *ngIf="bookingData; else noBookingData">
   price total: {{bookingData.totalPrice}}
   
+  <div *ngIf="rateusd">
+    Price $ {{bookingData.totalPrice/rateusd | number: '1.2-2'}}
+  </div>
+
+  <div *ngIf="rateeur">
+    Price EUR {{bookingData.totalPrice/rateeur | number: '1.2-2'}}
+  </div>
+  
 
 <div *ngIf="weatherdata">
     Current Weather: {{weatherdata.main.temp}}
