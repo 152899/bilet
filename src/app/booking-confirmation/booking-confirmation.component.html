@@ -1,0 +1,9 @@
+<div *ngIf="bookingData; else noBookingData">
+  price total: {{bookingData.totalPrice}}
+</div>
+
+<ng-template #noBookingData>
+  <div class="no-flights-info">
+    <p>noBookingData</p>
+  </div>
+</ng-template>

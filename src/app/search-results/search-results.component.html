@@ -1,0 +1,27 @@
+<div *ngIf="flights; else loading" class="searh-results">
+  <div *ngIf="flights.length > 0; else noFlightsInfo">
+    <div *ngFor="let flight of flights" class="flight-item">
+      <p>Airline: {{ flight.airlineCode }}</p>
+      <div *ngFor="let segment of flight.segments" class="segment">
+        <p>Departure: {{ segment.departure }}</p>
+        <p>Arrival: {{ segment.arrival }}</p>
+        <p>Duration: {{ segment.duration }}</p>
+      </div>
+      <p>Price: {{ flight.totalPrice }}</p>
+      <button (click)="selectFlight(flight)">Select flight</button>
+    </div>
+  </div>
+</div>
+
+<ng-template #noFlightsInfo>
+  <div class="no-flights-info">
+    <p>We haven't found any flight that matching your search criteria</p>
+  </div>
+</ng-template>
+
+<ng-template #loading>
+  <div class="no-flights-info">
+    <p>Loading</p>
+  </div>
+</ng-template>
+

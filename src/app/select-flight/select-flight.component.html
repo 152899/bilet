@@ -1,0 +1,120 @@
+SelectFlightComponent
+
+<div *ngIf="flight; else noFlightInfo" class="searh-results">
+  <div *ngIf="flight.hasOwnProperty('offerId'); else noFlightInfo" class="searh-results">
+    <div class="flight-item">
+      <p>Airline: {{ flight.airlineCode }}</p>
+      <div *ngFor="let segment of flight.segments" class="segment">
+        <p>Departure: {{ segment.departure }}</p>
+        <p>Arrival: {{ segment.arrival }}</p>
+        <p>Duration: {{ segment.duration }}</p>
+      </div>
+      <p>Price: {{ flight.totalPrice }}</p>
+    </div>
+
+    <form [formGroup]="bookingForm">
+
+      <label for="email">Email</label>
+      <input type="email" id="email" formControlName="email" />
+
+      <br />
+      <label for="cabinBaggage">Cabin baggage</label>
+      <input type="checkbox" id="cabinBaggage" formControlName="cabinBaggage" />
+
+      <br />
+      <label for="registeredBaggage">Registered baggae</label>
+      <input type="checkbox" id="registeredBaggage" formControlName="registeredBaggage" />
+
+      <br />
+
+      <div class="seats">
+        <div *ngFor="let seatsInRow of seats">
+          <div *ngFor="let seat of seatsInRow" class="seat" (click)="selectSeat(seat)" [ngClass]="{'selected' : isSeatSelected(seat)}"
+          >
+            {{seat}}
+          </div>
+          <div class="clearfix"></div>
+          <br />
+        </div>
+      </div>
+
+      <br />
+
+      <div *ngFor="let pax of adultsFormArray.controls; let i = index" class="list-group list-group-flush">
+        <div class="list-group-item">
+          <h5 class="card-title">Adult {{i + 1}}</h5>
+          <div [formGroup]="pax" class="form-row">
+            <div class="form-group col-6">
+              <label>Firstname</label>
+              <input type="text" formControlName="firstname" class="form-control" [ngClass]="{ 'is-invalid': submitted && pax.controls.firstname.errors }" />
+              <div *ngIf="submitted && pax.controls.firstname.errors" class="invalid-feedback">
+                <div *ngIf="pax.controls.firstname.errors.required">Firstname is required</div>
+              </div>
+            </div>
+            <div class="form-group col-6">
+              <label>Lastname</label>
+              <input type="text" formControlName="lastname" class="form-control" [ngClass]="{ 'is-invalid': submitted && pax.controls.lastname.errors }" />
+              <div *ngIf="submitted && pax.controls.lastname.errors" class="invalid-feedback">
+                <div *ngIf="pax.controls.lastname.errors.required">Lastname is required</div>
+              </div>
+            </div>
+            <div class="form-group col-6">
+              <label>Document number</label>
+              <input type="text" formControlName="documentNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && pax.controls.documentNumber.errors }" />
+              <div *ngIf="submitted && pax.controls.documentNumber.errors" class="invalid-feedback">
+                <div *ngIf="pax.controls.documentNumber.errors.required">Document number is required</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngFor="let pax of childrenFormArray.controls; let i = index" class="list-group list-group-flush">
+        <div class="list-group-item">
+          <h5 class="card-title">Child {{i + 1}}</h5>
+          <div [formGroup]="pax" class="form-row">
+            <div class="form-group col-6">
+              <label>Firstname</label>
+              <input type="text" formControlName="firstname" class="form-control" [ngClass]="{ 'is-invalid': submitted && pax.controls.firstname.errors }" />
+              <div *ngIf="submitted && pax.controls.firstname.errors" class="invalid-feedback">
+                <div *ngIf="pax.controls.firstname.errors.required">Firstname is required</div>
+              </div>
+            </div>
+            <div class="form-group col-6">
+              <label>Lastname</label>
+              <input type="text" formControlName="lastname" class="form-control" [ngClass]="{ 'is-invalid': submitted && pax.controls.lastname.errors }" />
+              <div *ngIf="submitted && pax.controls.lastname.errors" class="invalid-feedback">
+                <div *ngIf="pax.controls.lastname.errors.required">Lastname is required</div>
+              </div>
+            </div>
+            <div class="form-group col-6">
+              <label>Document number</label>
+              <input type="text" formControlName="documentNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && pax.controls.documentNumber.errors }" />
+              <div *ngIf="submitted && pax.controls.documentNumber.errors" class="invalid-feedback">
+                <div *ngIf="pax.controls.documentNumber.errors.required">Document number is required</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" (click)="book()">Book flight</button>
+    </form>
+
+  </div>
+
+</div>
+
+<ng-template #noFlightInfo>
+  <div class="no-flights-info">
+    <p>We haven't found any flight that matching your search criteria</p>
+  </div>
+</ng-template>
+
+<ng-template #loading>
+  <div class="no-flights-info">
+    <p>Loading</p>
+  </div>
+</ng-template>
+
+

@@ -1,0 +1,44 @@
+<form [formGroup]="searchForm" class="form-inline">
+
+  <div class="form-group">
+    <label for="departureAirport">Departure airport</label>
+    <select class="form-control-sm" id="departureAirport" formControlName="departureAirport" required="required">
+      <option value="">Choose</option>
+      <option value="KTW">Katowice</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="arrivalAirport">Arrival airport</label>
+    <select class="form-control-sm" id="arrivalAirport" formControlName="arrivalAirport" required="required">
+      <option value="">Choose</option>
+      <option value="WAW">Warszawa</option>
+      <option value="CDG">Paryż</option>
+      <option value="JFK">Nowy Jork</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="departureDate">Departure date</label>
+    <input class="form-control-sm" type="date" id="departureDate" formControlName="departureDate" required="required">
+  </div>
+  <div class="form-group">
+    <label for="returnDate">Arrival date</label>
+    <input class="form-control-sm" type="date" id="returnDate" formControlName="returnDate" required="required">
+  </div>
+  <div class="form-group">
+    <label for="adults">Adults</label>
+    <input class="form-control-sm" type="number" id="adults" formControlName="adults" min="0" />
+  </div>
+  <div class="form-group">
+    <label for="children">Children</label>
+    <input class="form-control-sm" type="number" id="children" formControlName="children" min="0" />
+  </div>
+  <div class="form-group">
+    <label for="serviceClass">Service class</label>
+    <select class="form-control-sm" id="serviceClass" formControlName="serviceClass" required="required">
+      <option value="economy">Economy</option>
+      <option value="business">Business</option>
+    </select>
+  </div>
+
+  <button [disabled]="searchForm.invalid" type="submit" (click)="searchFlights()">Search flights</button>
+</form>
