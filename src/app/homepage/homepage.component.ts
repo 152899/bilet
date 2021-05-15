@@ -13,7 +13,7 @@ export class HomepageComponent implements OnInit {
     private http: HttpClient
   ) {}
   ngOnInit(): void {
-          this.http.get("http://api.openweathermap.org/data/2.5/weather?id=3096472&appid=bd80bfbea3060030103cb1e0f79292d3&units=metric").subscribe((weatherdata: any) => {
+          this.http.get("https://api.openweathermap.org/data/2.5/weather?id=3096472&appid=bd80bfbea3060030103cb1e0f79292d3&units=metric").subscribe((weatherdata: any) => {
         this.weatherdata = weatherdata;
         console.log(weatherdata)
       });;

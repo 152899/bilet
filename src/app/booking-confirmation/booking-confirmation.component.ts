@@ -30,7 +30,7 @@ export class BookingConfirmationComponent implements OnInit {
     } else if (arrival == 'CDG'){
       city_id = 6455259;
     }
-    const link = `http://api.openweathermap.org/data/2.5/weather?id=${city_id}&appid=bd80bfbea3060030103cb1e0f79292d3&units=metric`;
+    const link = `https://api.openweathermap.org/data/2.5/weather?id=${city_id}&appid=bd80bfbea3060030103cb1e0f79292d3&units=metric`;
     this.http.get(link).subscribe((weatherdata: any) => {
       this.weatherdata = weatherdata;
       console.log(weatherdata);
