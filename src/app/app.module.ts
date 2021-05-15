@@ -13,6 +13,7 @@ import { SelectFlightCriteriaResolver } from './resolver/select-flight-criteria.
 import { BookingConfirmationComponent } from './booking-confirmation/booking-confirmation.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ApiService } from './api/api.service';
+import { HomepageComponent } from './homepage/homepage.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ApiService } from './api/api.service';
     SearchFormComponent,
     SearchResultsComponent,
     SelectFlightComponent,
-    BookingConfirmationComponent
+    BookingConfirmationComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,

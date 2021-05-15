@@ -1,5 +1,10 @@
 <div *ngIf="bookingData; else noBookingData">
   price total: {{bookingData.totalPrice}}
+  
+
+<div *ngIf="weatherdata">
+    Current Weather: {{weatherdata.main.temp}}
+  </div>
 </div>
 
 <ng-template #noBookingData>

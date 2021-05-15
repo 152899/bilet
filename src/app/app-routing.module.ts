@@ -5,6 +5,7 @@ import { SearchCriteriaResolver } from './resolver/search-criteria.resolver';
 import { SelectFlightComponent } from './select-flight/select-flight.component';
 import { SelectFlightCriteriaResolver } from './resolver/select-flight-criteria.resolver';
 import { BookingConfirmationComponent } from './booking-confirmation/booking-confirmation.component';
+import { HomepageComponent } from './homepage/homepage.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,10 @@ const routes: Routes = [
   {
     path: 'booking-confirmation/:bookingId',
     component: BookingConfirmationComponent
+  },
+  {
+    path: '',
+    component: HomepageComponent
   }
 ];
 

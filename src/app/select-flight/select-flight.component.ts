@@ -104,6 +104,8 @@ export class SelectFlightComponent implements OnInit {
     bookFlightData.childrenNumber = this.bookingForm.value.children.length;
     bookFlightData.serviceClass = this.selectFlightCriteria.serviceClass;
     bookFlightData.selectedSeats = this.selectedSeats;
+    bookFlightData.departureDate = this.selectFlightCriteria.departureDate;
+    bookFlightData.returnDate = this.selectFlightCriteria.returnDate;
 
     console.log(bookFlightData);
 
